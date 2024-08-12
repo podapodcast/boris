@@ -15,7 +15,6 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            overflow: hidden;
         }
 
         p {
@@ -29,7 +28,7 @@
             font-weight: 700;
             margin-bottom: 20px;
         }
-
+        
         h2 {
             padding: 0;
             margin: 5px;
@@ -49,8 +48,8 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
             margin-bottom: 20px;
-            width: 90%;
-            max-width: 400px;
+            width: 90%; /* Adjust as needed */
+            max-width: 400px; /* Set a maximum width */
             text-align: center;
         }
 
@@ -98,8 +97,8 @@
             background: #fff;
             padding: 30px;
             border-radius: 10px;
-            width: 90%;
-            max-width: 300px;
+            width: 90%; /* Adjust as needed */
+            max-width: 300px; /* Set a maximum width */
             text-align: center;
         }
 
@@ -108,8 +107,8 @@
             cursor: pointer;
         }
 
-        #congrats-message {
-            font-size: 18px;
+        #amount {
+            font-size: 24px;
             font-weight: bold;
             color: #000;
             margin-bottom: 20px;
@@ -126,47 +125,25 @@
             border-radius: 5px;
         }
 
-        .ribbon {
-            position: fixed;
-            width: 10px;
-            height: 30px;
-            background-color: #FFD700;
-            top: -50px;
-            animation: fall 4s linear infinite;
-        }
-
-        .ribbon:nth-child(2n) {
-            background-color: #FFD700;
-        }
-
-        @keyframes fall {
-            0% {
-                transform: translateY(0);
-            }
-            100% {
-                transform: translateY(100vh);
-            }
-        }
-
         /* Media queries for responsiveness */
         @media (max-width: 768px) {
             .card {
                 padding: 15px 30px;
-                width: 80%;
+                width: 80%; /* Adjust as needed */
             }
 
             #modal {
-                width: 80%;
+                width: 80%; /* Adjust as needed */
             }
         }
 
         @media (max-width: 480px) {
             .card {
-                width: 95%;
+                width: 95%; /* Adjust as needed */
             }
 
             #modal {
-                width: 95%;
+                width: 95%; /* Adjust as needed */
             }
         }
     </style>
@@ -174,21 +151,7 @@
 <body>
 
     <div id="card-container">
-        <div class="card" id="details-card">
-            <img src="./assets/fan_profile5.jpg" alt="Fan Profile Image">
-            <h3>Isela Aviña</h3>
-            <p>509 Brand Ln Trlr 12 Stafford Tx 77477</p>
-            <p>iselaavina2024@gmail.com</p>
-            <p>7135390736</p>
-        </div>
-
-        <div class="card" id="celebrity-card">
-            <img src="./assets/celeb profile.jpg" alt="Celebrity Profile Image">
-            <h2>Boris</h2>
-            <h2>VIP Card</h2>
-            <div id="vip-badge">VIP</div>
-            <p>Membership Card: #311</p>
-        </div>
+        <div class="card" id="details-card"> <img src="./assets/fan_profile5.jpg" alt="Fan Profile Image"> <h3>Isela Aviña</h3> <p>509 Brand Ln Trlr 12 Stafford Tx 77477</p> <p>iselaavina2024@gmail.com</p> <p>7135390736</p> </div> <div class="card" id="celebrity-card"> <img src="./assets/celeb profile.jpg" alt="Celebrity Profile Image"> <h2>Boris</h2> <h2>VIP Card</h2> <div id="vip-badge">VIP</div> <p>Membership Card: #311</p> </div>
 
         <button id="activate-btn" onclick="activateMembership()">Click here to activate</button>
     </div>
@@ -196,7 +159,11 @@
     <!-- Modal -->
     <div id="modal-overlay">
         <div id="modal">
-            <p id="congrats-message">Congratulations! Your VIP card is activated. Check your email for more details.</p>
+            <p id="amount">$1,000</p>
+            <p class="modal-details">
+                You will be required to pay this amount to activate your VIP membership.
+                Please contact Boris Management for payment details.
+            </p>
             <span id="close-modal" onclick="closeModal()">Close</span>
         </div>
     </div>
@@ -204,26 +171,10 @@
     <script>
         function activateMembership() {
             document.getElementById("modal-overlay").style.display = "flex";
-            addRibbons(30);
         }
 
         function closeModal() {
             document.getElementById("modal-overlay").style.display = "none";
-            removeRibbons();
-        }
-
-        function addRibbons(count) {
-            for (let i = 0; i < count; i++) {
-                const ribbon = document.createElement("div");
-                ribbon.className = "ribbon";
-                ribbon.style.left = Math.random() * 100 + "vw";
-                ribbon.style.animationDelay = Math.random() * 2 + "s";
-                document.body.appendChild(ribbon);
-            }
-        }
-
-        function removeRibbons() {
-            document.querySelectorAll('.ribbon').forEach(ribbon => ribbon.remove());
         }
     </script>
 </body>
